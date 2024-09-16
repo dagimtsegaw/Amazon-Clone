@@ -1,12 +1,14 @@
 import React from "react";
 import Header from "../Components/Header/Header";
-import Test from "../Components/Test/Test";
+import CarouselEffect from "../Components/Carousel/CarouselEffect";
+import Category from "../Components/Category/Category.";
 
 const Home = () => {
   return (
     <>
       <Header />
-      <Test />
+      <CarouselEffect />
+      <Category />
     </>
   );
 };
