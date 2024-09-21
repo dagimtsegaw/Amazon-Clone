@@ -20,6 +20,9 @@
   padding: 5px;
   margin-left: 15px;
 }
+.category h2 {
+  font-size: 20px;
+}
 .category p {
   font-size: 12px;
   font-weight: bold;

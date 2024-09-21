@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Header.module.css";
+import { Link } from "react-router-dom";
 import amazonWhite from "../../assets/Images/amazon-white-logo.png";
 import usFlag from "../../assets/Images/Us-flag.png";
 import { BsSearch } from "react-icons/bs";
@@ -46,19 +47,19 @@ const Header = () => {
                 <option>EN</option>
               </select>
             </a>
-            <a href="#">
+            <Link to="/auth">
               <p>Sign in</p>
               <span>Account & Lists</span>
-            </a>
+            </Link>
             {/* orders */}
-            <a href="#">
+            <Link to="/orders">
               <p>returns</p>
               <span>& Orders</span>
-            </a>
-            <a href="" className={classes.cart}>
+            </Link>
+            <Link to="/cart" className={classes.cart}>
               <BiCart size={35} />
               <span>0</span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>

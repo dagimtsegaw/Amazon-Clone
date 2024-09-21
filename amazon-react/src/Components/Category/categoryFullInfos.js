@@ -1,24 +1,24 @@
 export const categoryInfos = [
   {
-    title: "Amazon Fire sick",
-    name: "Amazon Fire TV Stick",
-    imgLink: "https://m.media-amazon.com/images/I/51TjJOTfslL._AC_SX569_.jpg",
-  },
-  {
-    title: "cool lugage",
-    name: "Coolife Luggage Suitcase",
+    title: "Electronics",
+    name: "electronics",
     imgLink:
-      "https://m.media-amazon.com/images/I/61mCtWcXh6L.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+      "https://m.media-amazon.com/images/I/61AQP4tYRwL._AC_UY327_FMwebp_QL65_.jpg",
   },
   {
-    title: "Women's clothing",
-    name: "SHEWIN Womens Sweaters",
-    imgLink: "https://m.media-amazon.com/images/I/617lcYiuicL._AC_SY679_.jpg",
-  },
-  {
-    title: "Men's Watch",
-    name: "Men's Easy to Read Strap Watch",
+    title: "Discover fashion trends",
+    name: "women's clothing",
     imgLink:
-      "https://m.media-amazon.com/images/I/81SkKZjDDyL._AC_UL480_FMwebp_QL65_.jpg",
+      "https://m.media-amazon.com/images/I/71fwZNz49GL._AC_UL480_FMwebp_QL65_.jpg",
+  },
+  {
+    title: "Men's Clothing",
+    name: "men's clothing",
+    imgLink: "https://m.media-amazon.com/images/I/71F4P1t80EL._AC_SX679_.jpg",
+  },
+  {
+    title: "Jewelery",
+    name: "jewelery",
+    imgLink: "https://m.media-amazon.com/images/I/91O5GL-eZlL._AC_SY675_.jpg",
   },
 ];
