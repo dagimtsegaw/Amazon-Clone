@@ -36,7 +36,11 @@ function Results() {
         ) : (
           <div className={classes.product_container}>
             {results?.map((product) => (
-              <ProductCard product={product} key={product.id} />
+              <ProductCard
+                product={product}
+                key={product.id}
+                renderAdd={true}
+              />
             ))}
           </div>
         )}

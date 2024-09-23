@@ -7,7 +7,7 @@ function Category() {
   return (
     <section className={classes.category_container}>
       {categoryInfos.map((infos) => (
-        <CategoryCard key={infos.title} data={infos} />
+        <CategoryCard key={infos.title} data={infos} renderAdd={true} />
       ))}
     </section>
   );
