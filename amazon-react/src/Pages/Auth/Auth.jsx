@@ -9,39 +9,50 @@ import {
 } from "firebase/auth";
 import { DataContext } from "../../Components/DataProvider/DataProvider";
 import { Type } from "../../Utility/action.type";
+import { ClipLoader } from "react-spinners";
 
 function Auth() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState({
+    signIn: false,
+    signUp: false,
+  });
   // console.log(password, email);
 
   const [{ user }, dispatch] = useContext(DataContext);
   console.log(user);
-  const authHandler = (e) => {
+  const authHandler = async (e) => {
     e.preventDefault();
     console.log(e.target.name);
     if (e.target.name == "signin") {
+      setLoading({ ...loading, signIn: true });
       signInWithEmailAndPassword(auth, email, password)
         .then((userInfo) => {
           dispatch({
             type: Type.SET_USER,
             user: userInfo.user,
           });
+          setLoading({ ...loading, signIn: false });
         })
         .catch((err) => {
           setError(err.message);
+          setLoading({ ...loading, signIn: false });
         });
     } else {
+      setLoading({ ...loading, signUp: true });
       createUserWithEmailAndPassword(auth, email, password)
         .then((userInfo) => {
           dispatch({
             type: Type.SET_USER,
             user: userInfo.user,
           });
+          setLoading({ ...loading, signUp: false });
         })
         .catch((err) => {
           setError(err.message);
+          setLoading({ ...loading, signUp: false });
         });
     }
   };
@@ -79,7 +90,7 @@ function Auth() {
             onClick={authHandler}
             name="signin"
           >
-            Sign In
+            {loading.signIn ? <ClipLoader color="#000" size={15} /> : "Sign In"}
           </button>
         </form>
         <p>
@@ -93,7 +104,11 @@ function Auth() {
           onClick={authHandler}
           name="signup"
         >
-          Create your amazon Account
+          {loading.signUp ? (
+            <ClipLoader color="#000" size={15} />
+          ) : (
+            "Create your amazon Account"
+          )}
         </button>
         {error && (
           <small style={{ paddingTop: "10px", color: "red" }}>{error}</small>
