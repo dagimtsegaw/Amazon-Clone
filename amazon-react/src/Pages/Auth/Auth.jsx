@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import classes from "./Auth.module.css";
 import logo from "../../assets/Images/amazon-black-logo.png";
 import { Link } from "react-router-dom";
@@ -7,19 +7,27 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
+import { DataContext } from "../../Components/DataProvider/DataProvider";
+import { Type } from "../../Utility/action.type";
 
 function Auth() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   // console.log(password, email);
+
+  const [{ user }, dispatch] = useContext(DataContext);
+  console.log(user);
   const authHandler = (e) => {
     e.preventDefault();
     console.log(e.target.name);
     if (e.target.name == "signin") {
       signInWithEmailAndPassword(auth, email, password)
         .then((userInfo) => {
-          console.log(userInfo);
+          dispatch({
+            type: Type.SET_USER,
+            user: userInfo.user,
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -27,7 +35,10 @@ function Auth() {
     } else {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userInfo) => {
-          console.log(userInfo);
+          dispatch({
+            type: Type.SET_USER,
+            user: userInfo.user,
+          });
         })
         .catch((err) => {
           console.log(err);
