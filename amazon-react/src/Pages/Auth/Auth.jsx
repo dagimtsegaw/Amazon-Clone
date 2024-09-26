@@ -30,7 +30,7 @@ function Auth() {
           });
         })
         .catch((err) => {
-          console.log(err);
+          setError(err.message);
         });
     } else {
       createUserWithEmailAndPassword(auth, email, password)
@@ -41,7 +41,7 @@ function Auth() {
           });
         })
         .catch((err) => {
-          console.log(err);
+          setError(err.message);
         });
     }
   };
@@ -95,6 +95,9 @@ function Auth() {
         >
           Create your amazon Account
         </button>
+        {error && (
+          <small style={{ paddingTop: "10px", color: "red" }}>{error}</small>
+        )}
       </div>
     </section>
   );
