@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Auth.module.css";
 import logo from "../../assets/Images/amazon-black-logo.png";
 import { Link } from "react-router-dom";
+import { auth } from "../../Utility/firebase";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 
 function Auth() {
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  // console.log(password, email);
+  const authHandler = (e) => {
+    e.preventDefault();
+    console.log(e.target.name);
+    if (e.target.name == "signin") {
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userInfo) => {
+          console.log(userInfo);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userInfo) => {
+          console.log(userInfo);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
   return (
     <section className={classes.login}>
       <Link>
@@ -15,14 +45,29 @@ function Auth() {
         <form>
           <div>
             <label htmlFor="email">E-mail</label>
-            <input type="email" id="email" />
+            <input
+              type="email"
+              id="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
           </div>
           <div>
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" />
+            <input
+              type="password"
+              id="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
           </div>
 
-          <button type="submit" className={classes.signIn_button}>
+          <button
+            type="submit"
+            className={classes.signIn_button}
+            onClick={authHandler}
+            name="signin"
+          >
             Sign In
           </button>
         </form>
@@ -31,7 +76,12 @@ function Auth() {
           Sale. Please see our Privacy Notice, our Cookies Notice and our
           Interest-Based Ads Notice.
         </p>
-        <button className={classes.register_button}>
+        <button
+          type="submit"
+          className={classes.register_button}
+          onClick={authHandler}
+          name="signup"
+        >
           Create your amazon Account
         </button>
       </div>
