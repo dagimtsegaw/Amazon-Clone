@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import classes from "./Auth.module.css";
 import logo from "../../assets/Images/amazon-black-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../Utility/firebase";
 import {
   signInWithEmailAndPassword,
@@ -19,7 +19,7 @@ function Auth() {
     signIn: false,
     signUp: false,
   });
-  // console.log(password, email);
+  const navigate = useNavigate();
 
   const [{ user }, dispatch] = useContext(DataContext);
   console.log(user);
@@ -35,6 +35,7 @@ function Auth() {
             user: userInfo.user,
           });
           setLoading({ ...loading, signIn: false });
+          navigate("/");
         })
         .catch((err) => {
           setError(err.message);
@@ -49,6 +50,7 @@ function Auth() {
             user: userInfo.user,
           });
           setLoading({ ...loading, signUp: false });
+          navigate("/");
         })
         .catch((err) => {
           setError(err.message);
@@ -58,7 +60,7 @@ function Auth() {
   };
   return (
     <section className={classes.login}>
-      <Link>
+      <Link to="/">
         <img src={logo} alt="amazon-logo" />
       </Link>
 
