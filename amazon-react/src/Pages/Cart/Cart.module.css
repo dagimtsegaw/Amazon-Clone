@@ -80,11 +80,19 @@
   .cart_container {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: auto;
     order: 1;
   }
   .cart_product {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: auto;
     gap: 10px;
+  }
+  .subtotal {
+    width: 70%;
+    height: auto;
   }
 }
