@@ -9,9 +9,10 @@ import { axiosInstance } from "../../Api/axios";
 import { ClipLoader } from "react-spinners";
 import { db } from "../../Utility/firebase";
 import { useNavigate } from "react-router-dom";
+import { Type } from "../../Utility/action.type";
 
 function Payment() {
-  const [{ user, basket }] = useContext(DataContext);
+  const [{ user, basket }, dispatch] = useContext(DataContext);
   console.log(user);
   const totalItem = basket?.reduce((amount, item) => {
     return item.amount + amount;
@@ -60,6 +61,8 @@ function Payment() {
         });
       setProcessing(false);
       navigate("/orders", { state: { msg: "You have placed a new order" } });
+
+      dispatch({ type: Type.EMPTY_BASKET });
     } catch (error) {
       console.log(error);
       setProcessing(false);
