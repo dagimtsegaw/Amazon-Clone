@@ -128,7 +128,7 @@
 .lower_container {
   background-color: #232f3e;
   color: white;
-  padding: 5px;
+  padding: 6px;
   font-size: 15px;
 }
 .lower_container ul {
@@ -137,7 +137,7 @@
   gap: 5px;
 }
 .lower_container ul li {
-  padding: 5px;
+  padding: 6px;
 }
 .lower_container ul li:first-child {
   display: flex;
