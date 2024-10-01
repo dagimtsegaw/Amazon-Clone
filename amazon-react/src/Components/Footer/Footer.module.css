@@ -1,0 +1,25 @@
+.container {
+  background-color: #232f3e;
+  display: flex;
+  color: white;
+  justify-content: space-evenly;
+  padding: 30px;
+}
+.container div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+ul {
+  list-style-type: none;
+}
+ul li {
+  margin-bottom: 5px;
+}
+ul li a {
+  text-decoration: none;
+  color: lightgray;
+}
+ul li a:hover {
+  text-decoration: underline;
+}
