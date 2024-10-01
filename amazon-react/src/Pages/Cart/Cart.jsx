@@ -5,8 +5,8 @@ import ProductCard from "../../Components/Product/ProductCard";
 import CurrencyFormat from "../../Components/CurrencyFormat/CurrencyFormat";
 import { Link } from "react-router-dom";
 import { Type } from "../../Utility/action.type";
-import { IoIosArrowDown } from "react-icons/io";
-import { IoIosArrowUp } from "react-icons/io";
+import { FaMinus } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import LayOut from "../../Components/LayOut/LayOut";
 
 function Cart() {
@@ -50,14 +50,14 @@ function Cart() {
                     onClick={() => increment(item)}
                     className={classes.btn}
                   >
-                    <IoIosArrowUp size={20} />
+                    <FaPlus size={15} />
                   </button>
                   <span>{item.amount}</span>
                   <button
                     onClick={() => decrement(item.id)}
                     className={classes.btn}
                   >
-                    <IoIosArrowDown size={20} />
+                    <FaMinus size={15} />
                   </button>
                 </div>
                 <div className={classes.subtotal}>
